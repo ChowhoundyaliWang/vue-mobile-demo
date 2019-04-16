@@ -4,7 +4,9 @@
         <mt-header fixed title='好好学习鸭梨要发财'></mt-header>
 
         <!-- 中间内容区域 -->
-        <router-view></router-view>
+		<transition name='fade'>
+	        <router-view></router-view>	
+		</transition>
 
         <!-- 底部 tabs 区域 -->
         <nav class="mui-bar mui-bar-tab">
@@ -52,5 +54,18 @@ export default {
 // }
 .app-container{
     padding-top: 40px;
+	overflow-x: hidden;  // 配合动画
+}
+.fade-enter-active, .fade-leave-active {
+	transition: all 0.5s ease;
+}
+.fade-enter{  // 进入
+	opacity: 0;
+	transform: translateX(100%)
+} 
+.fade-leave-to{ // 离开
+	opacity: 0;
+	transform: translateX(-100%);
+	position: absolute;  // 重点： 解决组件切换时，上下的问题
 }
 </style>

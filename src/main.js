@@ -9,9 +9,8 @@ Vue.config.productionTip = false
 // 这里可以省略 node_modules 这一层目录
 import 'mint-ui/lib/style.css'
 
-// 按需引入mint-ui部分组件（推荐使用方式）
+// 按需引入mint-ui部分组件（推荐使用方式）；使用 Vue.component 注册
 import { Header, Swipe, SwipeItem, Button } from 'mint-ui'
-// 使用 Vue.component 注册
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
@@ -21,6 +20,10 @@ Vue.component(Button.name, Button)
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 
+// 引入 axios
+import axios from 'axios'
+Vue.prototype.$axios = axios
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -28,3 +31,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
